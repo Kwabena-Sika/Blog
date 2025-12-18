@@ -1,0 +1,25 @@
+{% extends 'BlogApp/base.html' %}
+
+
+{% block page_header %}
+<a href="{% url 'BlogApp:blog_topics' %}">
+  <p>{{title}}</p>
+</a>
+{% endblock page_header %}
+
+{% block content %}
+  <a href="{% url 'BlogApp:add_post' title.id %}">Add a post</a>
+    {% for post in posts %}
+  <div class="card mb-3">
+    <h4 class="card-header">
+      {{post.date_created|date:'M d, Y H:i'}}
+      <small><a href="{% url 'BlogApp:edit_post' post.id %}">Edit Post</a></small>
+    </h4>
+     <div class="card-body">{{post.postText|linebreaks}}</div>
+  </div>
+
+{% empty %}
+  <p>There are no post for this topic.</p>
+{% endfor %}
+
+{% endblock content %}

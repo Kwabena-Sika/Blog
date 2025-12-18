@@ -1,0 +1,24 @@
+{% extends 'BlogApp/base.html' %}
+
+{% block page_header %}
+
+  <h1>Topics</h1>
+{% endblock page_header %}
+
+
+{% block content %}
+
+{% for topic in topics %}
+  <li class="list-group-item border-0">
+    <a href="{% url 'BlogApp:blog_entry' topic.id %}">{{ topic.text }}</a>
+  </li>
+{% empty %}
+<p class="list-group-item border-0">There are no topics available. </p>
+{% endfor %}
+
+<!-- Add a topic link -->
+ <a href="{% url 'BlogApp:add_topic' %}">Add Topic</a>
+{% endblock content %}
+
+
+
