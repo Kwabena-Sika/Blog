@@ -19,7 +19,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY", "fallback-secret-key")
 DEBUG = os.environ.get("DEBUG", "FALSE") == "TRUE"
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "*").split(",")
-
+CSRF_TRUSTED_ORIGINS = "https://*.railway.app",
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
